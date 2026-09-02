@@ -18,10 +18,15 @@ Hint: Boolean masking.
 import numpy as np
 marks = np.array([45, 78, 92, 33, 67, 89, 21, 76, 55])
 
-print("Students who scored > 60", marks>60)
+conditions = [
+    marks>60,
+    marks<40,
+]
 
-print("Students who scored < 40", marks<40)
+choices = ['passed', 'failed']
 
-print("Students who scored between 50 and 80", (marks>50) & (marks<80))
+result = np.select(conditions, choices, default="average")
+print('Result: ', result)
+
 
 print("Count students who passed", len(marks[marks>60]))
